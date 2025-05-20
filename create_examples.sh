@@ -70,6 +70,30 @@ for link in $links; do
   else
     echo "文件已存在，跳过: $path"
   fi
+  
+  # 创建data.sql文件
+  data_sql_path="${dir_path}/data.sql"
+  if [ ! -f "$data_sql_path" ]; then
+    echo "创建文件: $data_sql_path"
+    
+    # 创建data.sql内容
+    echo "-- ${title} 相关SQL" > "$data_sql_path"
+    echo "" >> "$data_sql_path"
+    echo "-- 创建数据库（如果不存在）" >> "$data_sql_path"
+    echo "CREATE DATABASE IF NOT EXISTS mysql_examples DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;" >> "$data_sql_path"
+    echo "USE mysql_examples;" >> "$data_sql_path"
+    echo "" >> "$data_sql_path"
+    echo "-- 创建表结构" >> "$data_sql_path"
+    echo "-- 待补充表结构定义" >> "$data_sql_path"
+    echo "" >> "$data_sql_path"
+    echo "-- 插入示例数据" >> "$data_sql_path"
+    echo "-- 待补充示例数据" >> "$data_sql_path"
+    echo "" >> "$data_sql_path"
+    echo "-- 示例查询" >> "$data_sql_path"
+    echo "-- 待补充示例查询" >> "$data_sql_path"
+  else
+    echo "文件已存在，跳过: $data_sql_path"
+  fi
 done
 
-echo "所有示例目录和README文件创建完成！"
+echo "所有示例目录和文件创建完成！"
